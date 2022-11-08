@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:firstdose/app/data/appnavigation.dart';
 import 'package:firstdose/app/models/intromodel.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +41,7 @@ class IntroscreenController extends GetxController {
     if (index == 0) {
       carouselController.animateToPage(1);
     } else {
-      print('go to login');
+      Appnavigations.gotoLoginFromonBoarding();
     }
   }
 }

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../../data/appnavigation.dart';
 import '../controllers/introscreen_controller.dart';
 
 class IntroscreenView extends GetView<IntroscreenController> {
@@ -25,11 +26,14 @@ class IntroscreenView extends GetView<IntroscreenController> {
           Positioned(
             top: 100,
             right: 30,
-            child: ApptextWidget(
-                fontsize: 18,
-                textcolor: Appcolors.whitecolor,
-                textweightt: FontWeight.w600,
-                value: Appstring.skip),
+            child: InkWell(
+              onTap: () => Appnavigations.gotoLoginFromonBoarding(),
+              child: ApptextWidget(
+                  fontsize: 18,
+                  textcolor: Appcolors.whitecolor,
+                  textweightt: FontWeight.w600,
+                  value: Appstring.skip),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 60),

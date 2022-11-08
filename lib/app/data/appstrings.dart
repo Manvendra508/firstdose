@@ -7,7 +7,11 @@ abstract class Appstring {
   static String otpPageTitle = "Verify Phone Number";
   static String otpPageSmallTitle = "Code is sent to ";
   static String didnotrecivecode = "Didn't receive code ? ";
+  static String searchbartext = "Search medicines...";
   static String resendcode = "Resend Code";
+  static String ordernnow = "Order Now";
+  static String shopbycat = "Shop By Category";
+  static String deliverymessage = "We Will Delivery \nyour Medicine";
   static String loginPageSmallTitle =
       "We will send to you a 6 digit \nconfirmation code.";
 }

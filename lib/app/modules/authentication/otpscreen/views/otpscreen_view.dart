@@ -14,7 +14,7 @@ import '../controllers/otpscreen_controller.dart';
 class OtpscreenView extends GetView<OtpscreenController> {
   OtpscreenView({Key? key}) : super(key: key);
   final OtpscreenController _otpscreenController =
-      Get.put(OtpscreenController(phonenumber: ''));
+      Get.find<OtpscreenController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,7 +121,9 @@ class OtpscreenView extends GetView<OtpscreenController> {
       style: TextStyle(fontSize: 22, color: Appcolors.blackcolor),
       textFieldAlignment: MainAxisAlignment.spaceAround,
       fieldStyle: FieldStyle.box,
-      onCompleted: (pin) {},
+      onCompleted: (pin) {
+        _otpscreenController.otppin = pin;
+      },
     );
   }
 
