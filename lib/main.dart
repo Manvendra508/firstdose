@@ -7,6 +7,10 @@ import 'app/routes/app_pages.dart';
 void main() {
   runApp(
     GetMaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+      ),
+      debugShowCheckedModeBanner: false,
       title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,

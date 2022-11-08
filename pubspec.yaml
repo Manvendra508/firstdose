@@ -2,20 +2,34 @@ name: firstdose
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
-  sdk: '>=2.18.0-234.0.dev <3.0.0'
+environment:
+  sdk: ">=2.18.0-234.0.dev <3.0.0"
 
-dependencies: 
+dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.5
-  flutter: 
+  otp_text_field: ^1.1.3
+  flutter:
     sdk: flutter
+  get_cli: ^1.8.1
+  hexcolor: ^2.0.7
+  carousel_slider: ^4.1.1
+  dots_indicator: ^2.1.0
 
-dev_dependencies: 
+dev_dependencies:
   flutter_lints: 2.0.1
-  flutter_test: 
+  flutter_native_splash: 2.0.1+1
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/splashimg.png
+  android_12:
+    image: assets/images/splashimg.png
+    icon_background_color: "#ffffff"
+  flutter_test:
     sdk: flutter
 
-flutter: 
+flutter:
   uses-material-design: true
-
+  assets:
+    - assets/images/
+    - assets/lotties/
