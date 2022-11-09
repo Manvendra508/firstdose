@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:firstdose/app/data/appcolors.dart';
 import 'package:firstdose/app/data/appstrings.dart';
+import 'package:firstdose/app/data/bottombar.dart';
 import 'package:firstdose/app/data/sharedwidgets/textwidget.dart';
 import 'package:flutter/material.dart';
 
@@ -16,27 +17,46 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _homeController.drawerKey,
+        drawer: const Drawer(),
+        floatingActionButton: _buildVBottomUploadButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: AppBottomBar(
+            bottombarItems: _homeController.itemilist, selected: 2),
         backgroundColor: Appcolors.scaffoldbgcolor,
         body: Padding(
           padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
-          child: Column(
-            children: [
-              _buildAppBar(),
-              const SizedBox(
-                height: 35,
-              ),
-              _buildSearchBar(),
-              const SizedBox(
-                height: 30,
-              ),
-              _buildContainer(),
-              const SizedBox(
-                height: 20,
-              ),
-              _buildGrid()
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _buildAppBar(),
+                const SizedBox(
+                  height: 35,
+                ),
+                _buildSearchBar(),
+                const SizedBox(
+                  height: 30,
+                ),
+                _buildContainer(),
+                const SizedBox(
+                  height: 20,
+                ),
+                _buildGrid()
+              ],
+            ),
           ),
         ));
+  }
+
+  _buildVBottomUploadButton() {
+    return Container(
+      width: 60,
+      height: 60,
+      decoration:
+          BoxDecoration(color: Appcolors.themeColor, shape: BoxShape.circle),
+      child:
+          Center(child: Image.asset('assets/images/homepageicons/camera.png')),
+    );
   }
 
   _buildGrid() {
@@ -203,7 +223,9 @@ class HomeView extends GetView<HomeController> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset('assets/images/homepageicons/menu.png'),
+        InkWell(
+            onTap: () => _homeController.drawerKey.currentState!.openDrawer(),
+            child: Image.asset('assets/images/homepageicons/menu.png')),
         Image.asset('assets/images/homepageicons/applogo.png'),
         Badge(
             badgeColor: Appcolors.themeColor,
