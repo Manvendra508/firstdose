@@ -87,21 +87,27 @@ class OtpscreenView extends GetView<OtpscreenController> {
         const SizedBox(
           height: 40,
         ),
-        InkWell(
-          onTap: () => _otpscreenController.verifyOtp(),
-          child: AppButton(
-              buttonborderraduios: 10,
-              buttoncolor: Appcolors.themeColor,
-              buttonfontcolor: Appcolors.whitecolor,
-              buttonfontsize: 17,
-              buttonfontwight: FontWeight.w600,
-              buttonheight: 55,
-              buttontext: Appstring.verifyOtp,
-              elevation: 0,
-              buttonwidth: Get.width,
-              hasicon: false,
-              icon: ''),
-        )
+        Obx(() => InkWell(
+              onTap: () => _otpscreenController.proccessing.value
+                  ? null
+                  : _otpscreenController.verifyOtp(),
+              child: AppButton(
+                  buttonborderraduios: 10,
+                  buttoncolor: _otpscreenController.proccessing.value
+                      ? Appcolors.lightthemencolor
+                      : Appcolors.themeColor,
+                  buttonfontcolor: Appcolors.whitecolor,
+                  buttonfontsize: 17,
+                  buttonfontwight: FontWeight.w600,
+                  buttonheight: 55,
+                  buttontext: _otpscreenController.proccessing.value
+                      ? Appstring.pleasewait
+                      : Appstring.verifyOtp,
+                  elevation: 0,
+                  buttonwidth: Get.width,
+                  hasicon: false,
+                  icon: ''),
+            ))
       ],
     );
   }

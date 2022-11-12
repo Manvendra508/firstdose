@@ -27,7 +27,10 @@ class IntroscreenView extends GetView<IntroscreenController> {
             top: 100,
             right: 30,
             child: InkWell(
-              onTap: () => Appnavigations.gotoLoginFromonBoarding(),
+              onTap: () => {
+                _introscreenController.appLocalData.saveIntroInfo(),
+                Appnavigations.gotoLoginFromonBoarding()
+              },
               child: ApptextWidget(
                   fontsize: 18,
                   textcolor: Appcolors.whitecolor,

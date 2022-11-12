@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 abstract class Appnavigations {
   static void openOtpScreen(String phonenumber) {
+    Get.delete<OtpscreenController>();
     Get.put(OtpscreenController(phonenumber: phonenumber));
     Get.to(() => OtpscreenView());
   }

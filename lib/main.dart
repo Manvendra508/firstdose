@@ -1,10 +1,29 @@
+import 'package:firstdose/app/data/localdata.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'app/routes/app_pages.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
+
+  String intialRoute = Routes.LOGIN;
+  final appLocalData = AppLocalData();
+  bool appinstalled = appLocalData.getIntroInfo();
+  bool logedin = appLocalData.getloginSuccess();
+
+  if (appinstalled) {
+    if (logedin) {
+      intialRoute = Routes.HOME;
+    } else {
+      intialRoute = Routes.LOGIN;
+    }
+  } else {
+    intialRoute = Routes.INTROSCREEN;
+  }
+
   runApp(
     GetMaterialApp(
       theme: ThemeData(
@@ -12,7 +31,7 @@ void main() {
       ),
       debugShowCheckedModeBanner: false,
       title: "Application",
-      initialRoute: AppPages.INITIAL,
+      initialRoute: intialRoute,
       getPages: AppPages.routes,
     ),
   );

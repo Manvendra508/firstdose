@@ -86,21 +86,27 @@ class LoginView extends GetView<LoginController> {
           const SizedBox(
             height: 25,
           ),
-          InkWell(
-            onTap: () => _loginController.loginUser(),
-            child: AppButton(
-                buttonborderraduios: 10,
-                buttoncolor: Appcolors.themeColor,
-                buttonfontcolor: Appcolors.whitecolor,
-                buttonfontsize: 17,
-                buttonfontwight: FontWeight.w600,
-                buttonheight: 55,
-                buttontext: Appstring.continuetext,
-                elevation: 0,
-                buttonwidth: Get.width,
-                hasicon: false,
-                icon: ''),
-          )
+          Obx(() => InkWell(
+                onTap: () => _loginController.proccessing.value
+                    ? null
+                    : _loginController.loginUser(),
+                child: AppButton(
+                    buttonborderraduios: 10,
+                    buttoncolor: _loginController.proccessing.value
+                        ? Appcolors.lightthemencolor
+                        : Appcolors.themeColor,
+                    buttonfontcolor: Appcolors.whitecolor,
+                    buttonfontsize: 17,
+                    buttonfontwight: FontWeight.w600,
+                    buttonheight: 55,
+                    buttontext: _loginController.proccessing.value
+                        ? Appstring.pleasewait
+                        : Appstring.continuetext,
+                    elevation: 0,
+                    buttonwidth: Get.width,
+                    hasicon: false,
+                    icon: ''),
+              ))
         ],
       ),
     );

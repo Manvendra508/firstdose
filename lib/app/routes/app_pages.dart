@@ -1,3 +1,4 @@
+import 'package:firstdose/app/data/localdata.dart';
 import 'package:get/get.dart';
 
 import '../modules/authentication/login/bindings/login_binding.dart';
@@ -14,7 +15,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  //static const INITIAL = Routes.INTROSCREEN;
 
   static final routes = [
     GetPage(

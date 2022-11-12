@@ -10,6 +10,8 @@ abstract class Appstring {
   static String searchbartext = "Search medicines...";
   static String resendcode = "Resend Code";
   static String ordernnow = "Order Now";
+  static String pleasewait = "Please Wait...";
+  static String verifyotpsuccess = "Otp Verification Success!";
   static String somethingwentwrong = "Something Went Wrong!";
   static String shopbycat = "Shop By Category";
   static String deliverymessage = "We Will Delivery \nyour Medicine";

@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:firstdose/app/data/appnavigation.dart';
+import 'package:firstdose/app/data/localdata.dart';
 import 'package:firstdose/app/models/intromodel.dart';
 import 'package:get/get.dart';
 
 class IntroscreenController extends GetxController {
   CarouselController carouselController = CarouselController();
+  final appLocalData = AppLocalData();
   RxInt currentIndex = 0.obs;
   List<IntroModel> introdata = [
     IntroModel(
@@ -41,6 +43,8 @@ class IntroscreenController extends GetxController {
     if (index == 0) {
       carouselController.animateToPage(1);
     } else {
+      appLocalData.saveIntroInfo();
+
       Appnavigations.gotoLoginFromonBoarding();
     }
   }

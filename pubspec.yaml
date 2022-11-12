@@ -19,6 +19,7 @@ dependencies:
   http: ^0.13.5
   flutter:
     sdk: flutter
+  get_storage: ^2.0.3
 
 dev_dependencies:
   flutter_lints: 2.0.1
@@ -37,4 +38,4 @@ flutter:
   assets:
     - assets/images/
     - assets/images/homepageicons/
-    - assets/lotties/
+    

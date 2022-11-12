@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   final phone = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  RxBool proccessing = false.obs;
   LoginResponseModel _loginResponseModel = LoginResponseModel();
   @override
   void onInit() {
@@ -31,10 +32,12 @@ class LoginController extends GetxController {
 
   loginUser() async {
     if (formKey.currentState!.validate()) {
+     
       try {
         Map bodydata = {"phone_number": phone.text};
         var url = Uri.parse(Apis.loginApiUrl);
         var response = await http.post(url, body: bodydata);
+         proccessing.value = true;
         if (response.statusCode == 200) {
           var parsedData = jsonDecode(response.body);
 
@@ -48,6 +51,8 @@ class LoginController extends GetxController {
         }
       } catch (e) {
         throw Exception(e);
+      } finally {
+        proccessing.value = false;
       }
     }
   }
