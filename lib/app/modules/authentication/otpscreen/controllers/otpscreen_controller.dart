@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:firstdose/app/data/appnavigation.dart';
 import 'package:firstdose/app/data/appstrings.dart';
 import 'package:firstdose/app/data/localdata.dart';
+import 'package:firstdose/app/models/otpverifyfailmodel.dart';
 import 'package:firstdose/app/models/verifyotpmodel.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -34,26 +35,33 @@ class OtpscreenController extends GetxController {
 
   verifyOtp() async {
     try {
+      proccessing.value = true;
       Map bodydata = {"otp": otppin, "phone_number": phonenumber};
       var url = Uri.parse(Apis.otpApiUrl);
       final response = await http.post(url, body: bodydata);
-      proccessing.value = true;
+
       if (response.statusCode == 200) {
         var parsedData = jsonDecode(response.body);
 
         _verifyOtpModel = VerifyOtpModel.fromJson(parsedData);
+        proccessing.value = false;
         if (_verifyOtpModel.status == 1) {
           appLocalData.saveloginSuccess();
           Appdialogs.showToast(Appstring.verifyOtp);
           Appnavigations.openHomeScreen();
+          proccessing.value = false;
+        } else if (_verifyOtpModel.status == 0) {
+          OtpFailModel ofm = OtpFailModel.fromJson(parsedData);
+          Appdialogs.showToast(ofm.message ?? '');
+          proccessing.value = false;
         } else {
           Appdialogs.showToast(Appstring.somethingwentwrong);
+          proccessing.value = false;
         }
       }
     } catch (e) {
-      throw Exception(e);
-    } finally {
       proccessing.value = false;
+      throw Exception(e);
     }
   }
 }

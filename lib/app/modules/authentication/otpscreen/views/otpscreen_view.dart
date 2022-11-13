@@ -96,7 +96,9 @@ class OtpscreenView extends GetView<OtpscreenController> {
                   buttoncolor: _otpscreenController.proccessing.value
                       ? Appcolors.lightthemencolor
                       : Appcolors.themeColor,
-                  buttonfontcolor: Appcolors.whitecolor,
+                  buttonfontcolor: _otpscreenController.proccessing.value
+                      ? Appcolors.blackcolor
+                      : Appcolors.whitecolor,
                   buttonfontsize: 17,
                   buttonfontwight: FontWeight.w600,
                   buttonheight: 55,

@@ -95,7 +95,9 @@ class LoginView extends GetView<LoginController> {
                     buttoncolor: _loginController.proccessing.value
                         ? Appcolors.lightthemencolor
                         : Appcolors.themeColor,
-                    buttonfontcolor: Appcolors.whitecolor,
+                    buttonfontcolor: _loginController.proccessing.value
+                        ? Appcolors.blackcolor
+                        : Appcolors.whitecolor,
                     buttonfontsize: 17,
                     buttonfontwight: FontWeight.w600,
                     buttonheight: 55,
